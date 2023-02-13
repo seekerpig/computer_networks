@@ -30,6 +30,7 @@ public class Rfc865UdpClient {
             //
             byte[] buffer = new byte[256];
             String myipaddress = socket.getLocalAddress().toString();
+            System.out.println(myipaddress);
             String quote = "Soh Zu Wei, A21, " + myipaddress;
             buffer = quote.getBytes();
 
@@ -42,6 +43,7 @@ public class Rfc865UdpClient {
             DatagramPacket reply = new DatagramPacket(buffer, 0, request.getLength());
             socket.receive(reply);
             
+            System.out.println("Reply is:");
             System.out.println(new String(buffer, 0, reply.getLength()));
         } catch (IOException e) {}
     }
