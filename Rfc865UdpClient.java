@@ -22,13 +22,15 @@ public class Rfc865UdpClient {
 
         try {
             socket = new DatagramSocket();
+            
         } catch (SocketException e) {}
         try {
             //
             // 2. Send UDP request to server
             //
             byte[] buffer = new byte[256];
-            String quote = "Soh Zu Wei, A21, ";
+            String myipaddress = socket.getLocalAddress().toString();
+            String quote = "Soh Zu Wei, A21, " + myipaddress;
             buffer = quote.getBytes();
 
             DatagramPacket request = new DatagramPacket(buffer, buffer.length , address, port);
