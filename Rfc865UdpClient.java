@@ -15,9 +15,9 @@ public class Rfc865UdpClient {
         //
         // 1. Open UDP socket
         //
-        String hostname = "localhost";
+        String hostname = "hwlab1.scse.ntu.edu.sg";
         int port = 17;
-        InetAddress myAddress = InetAddress.getByName(hostname);
+        InetAddress address = InetAddress.getByName(hostname);
 
 
         try {
@@ -27,9 +27,11 @@ public class Rfc865UdpClient {
             //
             // 2. Send UDP request to server
             //
-            byte[] buffer = new byte[512];
+            byte[] buffer = new byte[256];
+            String quote = "Soh Zu Wei, A21, ";
+            buffer = quote.getBytes();
 
-            DatagramPacket request = new DatagramPacket(buffer, buffer.length, myAddress, port);
+            DatagramPacket request = new DatagramPacket(buffer, buffer.length , address, port);
             socket.send(request);
             
             //
